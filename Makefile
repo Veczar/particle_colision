@@ -1,7 +1,7 @@
 # Kompilator i flagi
 CC = gcc
-CFLAGS = -O2 -Wall -fopenmp -Iinclude
-LDFLAGS = -lm
+CFLAGS = -O2 -Wall -fopenmp -Iinclude $(shell sdl2-config --cflags)
+LDFLAGS = -lm $(shell sdl2-config --libs)
 
 # Nazwa programu
 TARGET = particle_sim
@@ -30,7 +30,8 @@ run: $(TARGET)
 	./$(TARGET)
 
 # Tryb debugowania (z symbolami i bez optymalizacji)
-debug: CFLAGS = -g -Wall -fopenmp -Iinclude
+debug: CFLAGS = -g -Wall -Iinclude $(shell sdl2-config --cflags)
+debug: LDFLAGS = -lm $(shell sdl2-config --libs)
 debug: clean $(TARGET)
 
 # Czyszczenie
