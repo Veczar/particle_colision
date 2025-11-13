@@ -1,5 +1,5 @@
-CFLAGS  = -std=c11 -O2 -Wall -Wextra -Wpedantic $(shell pkg-config --cflags sdl2)
-LDFLAGS = $(shell pkg-config --libs sdl2) -lm
+CFLAGS  = -std=c11 -O2 -Wall -Wextra -Wpedantic -fopenmp $(shell pkg-config --cflags sdl2)
+LDFLAGS = $(shell pkg-config --libs sdl2) -lm -fopenmp
 
 all: particles
 

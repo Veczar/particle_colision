@@ -4,6 +4,7 @@
 #include <time.h>
 #include "physics.h"
 #include "draw.h"
+#include <omp.h>
 
 typedef struct
 {
@@ -21,6 +22,8 @@ int main()
     int radius_min = 3;
     int radius_max = 8;
     unsigned seed = (unsigned)time(NULL);
+
+    printf("OpenMP threads: %d\n", omp_get_max_threads());
 
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) != 0)
     {
